@@ -1,4 +1,6 @@
-
+<?php
+require_once('config.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +22,29 @@
 </head>
 
 <body class="bg-default">
+<div>
+<?php
+
+    if(isset($_POST['create'])){
+      $username = $_POST['username'];
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+      $sql = "INSERT INTO users (username, email, password) VALUES(?,?,?,?,?)";
+      $stmtinsert = $db->prepare($sql);
+      $result = $stmtinsert->execute([$username, $email, $password]);
+      if($result){
+        echo'Succesfully saved';
+      }else{
+        echo'There were error while saving';
+      }
+        }
+
+
+
+
+    ?>
+</div>
+
   <div class="main-content">
     <!-- Navbar -->
     <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
@@ -93,13 +118,13 @@
               <div class="text-center text-muted mb-4">
                 <small>Or sign up with credentials</small>
               </div>
-              <form role="form">
+              <form role="form" action="#">
                 <div class="form-group">
                   <div class="input-group input-group-alternative mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Name" type="text">
+                    <input class="form-control" placeholder="Name" type="text" name="username" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -107,7 +132,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Email" type="email">
+                    <input class="form-control" placeholder="Email" type="email" name="email" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -115,7 +140,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Password" type="password">
+                    <input class="form-control" placeholder="Password" type="password" name="password" required>
                   </div>
                 </div>
                 <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
@@ -130,8 +155,8 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary mt-4">Create account</button>
-                </div>
+                <input type="submit" name="create">
+                   </div>
               </form>
             </div>
           </div>

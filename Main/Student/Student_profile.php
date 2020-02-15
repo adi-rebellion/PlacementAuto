@@ -186,7 +186,7 @@
                   <img alt="Image placeholder" src="<?=$_SESSION['user']['picture']; ?>">
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
+                  <span class="mb-0 text-sm  font-weight-bold"><?=$_SESSION['user']['name']; ?></span>
                 </div>
               </div>
             </a>
@@ -229,7 +229,7 @@
       <div class="container-fluid d-flex align-items-center">
         <div class="row">
           <div class="col-lg-7 col-md-10">
-            <h1 class="display-2 text-white">Hello Jesse</h1>
+            <h1 class="display-2 text-white"><?=$_SESSION['user']['name']; ?></h1>
             <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
            
           </div>
@@ -277,7 +277,7 @@
               </div>
               <div class="text-center">
                 <h3>
-                  Jessica Jones<span class="font-weight-light">, 27</span>
+                <?=$_SESSION['user']['name']; ?><span class="font-weight-light">, 27</span>
                 </h3>
                 <div class="h5 font-weight-300">
                   <i class="ni location_pin mr-2"></i>Bucharest, Romania
@@ -321,7 +321,7 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email" name="email" required>Email address</label>
-                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com" value="<?=$_SESSION['user']['email']; ?>">
                       </div>
                     </div>
                   </div>
